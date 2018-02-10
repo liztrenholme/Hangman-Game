@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<html lang="en-us">
+	<link rel="stylesheet" href="Assets/css/reset.css" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link rel="stylesheet" href="Assets/css/style.css" />
+	<title>Hangman!</title>
+</head>
+<body>
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<a class="navbar-brand" href="#"><h1>Hangman</h1></a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="nav justify-content-end">
+				<li class="nav-item">
+					<a class="nav-link" href="/index.html">Play</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/portfolio.html">New Word</a>
+				</li>
+				<li>
+				</li>
+			</ul>
+		</div>
+	</nav>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-3">
+				<span id="guesses"></span>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-3"></div>
+			<div class="col-lg-6">
+				<div class="gameboard">
+					<div id="wordspace">
+						<p>_ _</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<script src="Assets/javascript/game.js"></script>
+
+</body>
+</html>

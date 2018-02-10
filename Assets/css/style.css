@@ -1,0 +1,19 @@
+body {
+	background-color: gray;
+}
+
+nav {
+	background-color: gray;
+}
+
+.gameboard {
+	display: block;
+	background-color: #fff;
+	height: 200px;
+	padding: 10px;
+	border: 10px solid hotpink;
+}
+
+#wordspace {
+	color: green;
+}
