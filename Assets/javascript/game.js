@@ -1,6 +1,5 @@
 var alphabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
-var words = ["HAPPY", "KITTY", "HUNGRY", "TUNA", "FUZZY", "CRAZY", "SIAMESE", "MAINE COON", "BURMESE", "TABBY", "TUXEDO", "MEOW", "FLOOF", "WHISKERS", "PURR", "PAWS"];
-//var guess = event.key;
+var words = ["HAPPY", "KITTY", "TREATS", "TUNA", "FUZZY", "CRAZY", "SIAMESE", "MAINE COON", "BURMESE", "TABBY", "TUXEDO", "MEOW", "FLOOF", "WHISKERS", "PURR", "PAWS"];
 var guesses = [];
 var wins = [];
 
@@ -10,28 +9,26 @@ var word = words[wordNum];
 //var spaces = document.getElementById("wordspace");
 
 
-
-var wordspace = document.getElementById("wordspace");
-
+// function for putting word onto board
 function makeWord() {
 	document.getElementById("wordspace").innerHTML = word;
 };
-//wordspace.onkeypress = 
 
-//document.onkeypress = makeWord();
+// Begins game when user presses any key
+document.addEventListener("keyup", function() {
+	makeWord();
+}, false);
 
-document.getElementById("wordspace").addEventListener("keypress", makeWord, false);
+
 
 function guessedLetters() {
 	for (var i = 0; i < guess.length; i++) {
 		(guesses.push(guess) + (i + 1));
 	}
-	guesses.innerHTML.toUpperCase();
+	guesses.toUpperCase();
+	document.getElementById("guesses").innerHTML = guesses[i];
 };
 
- //makeWord();
-
-document.getElementById("guesses").innerHTML = guesses;
 
 
 
