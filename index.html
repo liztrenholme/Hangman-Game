@@ -10,7 +10,7 @@
 </head>
 <body>
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
-		<a class="navbar-brand" href="#"><h1>Hangman</h1></a>
+		<p id="start"></p>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
@@ -31,7 +31,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-3">
-				<span id="guesses"></span>
+				<div></div>
 			</div>
 		</div>
 		<div class="row">
@@ -39,15 +39,20 @@
 			<div class="col-lg-6">
 				<div class="gameboard">
 					<div id="wordspace">
-						<p>_ _</p>
+						<p>Press any key to get started!</p>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
+		<div class="row">
+			<div class="col-lg-3">
+				<div id="guesses">
+					<p>Guesses left: 8</p>
+				</div>
+			</div>
+		</div>
 
+		<script src="Assets/javascript/game.js"></script>
 
-	<script src="Assets/javascript/game.js"></script>
-
-</body>
-</html>
+	</body>
+	</html>
