@@ -3,7 +3,6 @@ var words = ["HAPPY", "KITTY", "TREATS", "TUNA", "FUZZY", "CRAZY", "SIAMESE", "M
 var guessesLeft = 15;
 var wins = 0;
 var spaces = [" ", "_", "_ _", "_ _ _", "_ _ _ _", "_ _ _ _ _", "_ _ _ _ _ _", "_ _ _ _ _ _ _", "_ _ _ _ _ _ _ _", "_ _ _ _ _ _ _ _", "_ _ _ _ _ _ _ _ _", "_ _ _ _ _ _ _ _ _ _"];
-var letter = document.addEventListener("keyup", guessTheLetter, [false]);
 var guesses = [];
 
 // Picking a random word from the words array
@@ -15,7 +14,7 @@ function beginGame() {
 		makeWord();
 		spaceOut();
 	}, false);
-}
+};
 
 // putting word onto board
 function makeWord() {
@@ -28,9 +27,11 @@ function spaceOut() {
 	document.getElementById("wordspace").innerHTML = spaces[word.length];
 };
 
-// 
-function guessTheLetter() {
-	for (var i = 0; i < alphabet.length; i++) {
+document.onkeyup = function(event) {
+    var letter = event.key;
+    letter = letter.toUpperCase();
+    console.log(letter);
+	for (var i = 0; i < word.length; i++) {
 		if (letter === word.charAt()) {
 			for (var i = 0; i < word.length; i++) {
 				if (word[i] === letter) {
@@ -41,26 +42,20 @@ function guessTheLetter() {
 		else if (word.indexOf(letter) === -1) { // letter is NOT in the word
     guesses.push(letter); // update letters guessed
     guesses.innerHTML = guesses.join(', ');
+    document.getElementById("guesses").innerHTML = guesses[i];
+    document.getElementById("guesses-left").innerHTML = guessesLeft--;
 		} 
 	}
-}
+};
 
 for (var i = 0; i < guesses.length; i++) {
 	letter.toUpperCase();
 	(letter.push(guesses) + (i + 1));
-}
-//document.getElementById("guesses").innerHTML = letter;
-console.log(letter);
-//};
+};
 
 // Begins game when user presses any key
 beginGame();
 
-// Lists each guessed letter
-//var letter = document.addEventListener("keyup", function() {
-
-//	guessedTheLetter();
-//}, false);
 
 
 
@@ -70,14 +65,7 @@ beginGame();
 
 
 
-//	word.charAt[i];
-
-
-/*
-	setUpWord: function(word) {
-		word.toUpperCase();
-		spaces.toUpperCase();
-	}
+/*	word.charAt[i];
 
 	guess: function() {
 		document.onkeypress = function(event) {
