@@ -4,6 +4,7 @@ var guessesLeft = 15;
 var wins = 0;
 var spaces = [" ", "_", "_ _", "_ _ _", "_ _ _ _", "_ _ _ _ _", "_ _ _ _ _ _", "_ _ _ _ _ _ _", "_ _ _ _ _ _ _ _", "_ _ _ _ _ _ _ _", "_ _ _ _ _ _ _ _ _", "_ _ _ _ _ _ _ _ _ _"];
 var guesses = [];
+var incorrectLetters = [];
 
 // Picking a random word from the words array
 var wordNum = Math.floor(Math.random() * words.length); 
@@ -27,55 +28,55 @@ function spaceOut() {
 	document.getElementById("wordspace").innerHTML = spaces[word.length];
 };
 
-document.onkeyup = function(event) {
-    var letter = event.key;
-    letter = letter.toUpperCase();
-    console.log(letter);
-	for (var i = 0; i < word.length; i++) {
-		if (letter === word.charAt()) {
-			for (var i = 0; i < word.length; i++) {
-				if (word[i] === letter) {
-					word[i] = letter;
-				}
-			}
+// make sure key pressed is actually a letter
+function validateLetter() {
+	for (i = 0; i < alphabet.length; i++) {
+		if (letter === alphabet[i]) {
+			letter = letter;
 		}
-		else if (word.indexOf(letter) === -1) { // letter is NOT in the word
-    guesses.push(letter); // update letters guessed
-    guesses.innerHTML = guesses.join(', ');
-    document.getElementById("guesses").innerHTML = guesses[i];
-    document.getElementById("guesses-left").innerHTML = guessesLeft--;
-		} 
+		else {
+			letter = null;
+		}
 	}
 };
 
-for (var i = 0; i < guesses.length; i++) {
-	letter.toUpperCase();
-	(letter.push(guesses) + (i + 1));
+// determine if letter is in word or not
+function judgeLetter() {
+	for (var i = 0; i < word.length; i++) {
+		if (letter === word.charAt()) { // if letter is in word
+			spaceToLetter();
+		}
+		else {
+			noBueno();
+		}
+	}
 };
 
-// Begins game when user presses any key
+
+// put correct letter guessed in word
+function spaceToLetter() {
+
+};
+
+
+// put incorrect letter guessed into guesses array, decrement chances left
+function noBueno() {
+
+};
+
+// if all letters are guessed, increment wins number
+function score() {
+	if (word === word) {
+		wins = wins + 1;
+		document.getElementById("wins").innerHTML = wins;
+	}
+};
+
 beginGame();
 
-
-
-
-
-
-
-
-
-
-/*	word.charAt[i];
-
-	guess: function() {
-		document.onkeypress = function(event) {
-			spaces.textContent = event.key;
-		}
-	};
-
-
-
-// guessedLets.includes(word.charAt[i])
-// join()
-
-document.create.element("div"); */
+document.onkeyup = function(event) {
+	var letter = event.key;
+	letter = letter.toUpperCase();
+	console.log(letter);
+	console.log(word);
+};
