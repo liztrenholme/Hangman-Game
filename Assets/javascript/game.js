@@ -5,6 +5,8 @@ var wins = 0;
 var spaces = [" ", "_", "_ _", "_ _ _", "_ _ _ _", "_ _ _ _ _", "_ _ _ _ _ _", "_ _ _ _ _ _ _", "_ _ _ _ _ _ _ _", "_ _ _ _ _ _ _ _", "_ _ _ _ _ _ _ _ _", "_ _ _ _ _ _ _ _ _ _"];
 var guesses = [];
 var incorrectLetters = [];
+var letter;
+var spacedWord;
 
 // Picking a random word from the words array
 var wordNum = Math.floor(Math.random() * words.length); 
@@ -17,66 +19,51 @@ function beginGame() {
 	}, false);
 };
 
-// putting word onto board
+// putting word onto board	
 function makeWord() {
-	document.getElementById("wordspace").innerHTML = word;
+	document.getElementById("wordspace").textContent = word;
 	console.log(word);
 };
 
 // putting spaces in place of letters
 function spaceOut() {
-	document.getElementById("wordspace").innerHTML = spaces[word.length];
+	document.getElementById("wordspace").textContent = spaces[word.length];
 };
 
-// make sure key pressed is actually a letter
-function validateLetter() {
-	for (i = 0; i < alphabet.length; i++) {
+
+document.onkeyup = function(event) {
+	letter = event.key;
+	letter = letter.toUpperCase();
+//	console.log(letter);
+	console.log(word);
+	spacedWord = spaces[word.length];
+	console.log(spacedWord);
+
+// letters not being validated?
+	for (i = 0; i < letter.length; i++) {
 		if (letter === alphabet[i]) {
 			letter = letter;
 		}
 		else {
-			letter = null;
+			//letter = "blah";
+			console.log(letter);
 		}
 	}
-};
-
-// determine if letter is in word or not
-function judgeLetter() {
-	for (var i = 0; i < word.length; i++) {
-		if (letter === word.charAt()) { // if letter is in word
-			spaceToLetter();
-		}
-		else {
-			noBueno();
+console.log(letter);
+	if (word.includes(letter)) { 
+		for (var i = 0; i < word.length; i++) {
+		if (word.charAt(i) === letter) {
+			spacedWord.slice(i, i + 1);
 		}
 	}
-};
+}
+	else {
+		guessesLeft--;
+		document.getElementById("guesses-left").textContent = guessesLeft;
+		guesses.push(letter) + (i + 1);
+		document.getElementById("guesses").textContent = guesses + " ";
 
-
-// put correct letter guessed in word
-function spaceToLetter() {
-
-};
-
-
-// put incorrect letter guessed into guesses array, decrement chances left
-function noBueno() {
-
-};
-
-// if all letters are guessed, increment wins number
-function score() {
-	if (word === word) {
-		wins = wins + 1;
-		document.getElementById("wins").innerHTML = wins;
-	}
-};
+	};
+}
 
 beginGame();
-
-document.onkeyup = function(event) {
-	var letter = event.key;
-	letter = letter.toUpperCase();
-	console.log(letter);
-	console.log(word);
-};

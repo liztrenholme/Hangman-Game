@@ -2,9 +2,26 @@ body {
 	background-color: gray;
 }
 
+.container {
+	background-image: url("../../Assets/images/radio.jpg");
+}
+
 nav {
 	background-color: gray;
 }
+
+a:link {
+	color: gray;
+	text-decoration: none;
+	}
+a:visited {
+	color: gray;
+	text-decoration: none;
+	}
+a:hover {
+	color: hotpink;
+	text-decoration: none;
+	}
 
 .gameboard {
 	display: block;
