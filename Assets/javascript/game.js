@@ -4,9 +4,9 @@ var guessesLeft = 15;
 var wins = 0;
 var guesses = [];
 var incorrectLetters = [];
+var correctLetters = [];
 var letter;
-var spacedWord;
-var lettersInWord = [];
+var wordAsSpaces = [];
 
 // picking a random word from the words array
 var wordNum = Math.floor(Math.random() * words.length); 
@@ -21,10 +21,11 @@ function beginGame() {
 // putting word onto board	
 function makeWord() {
 	for (var i = 0; i < word.length; i++) {
-		lettersInWord.push("_");
+		wordAsSpaces.push("_");
 	}
-	document.getElementById("wordspace").textContent = lettersInWord.join(" ");
-	console.log(word);
+// turns wordAsSpaces into string from array
+document.getElementById("wordspace").textContent = wordAsSpaces.join(" ");
+console.log(word);
 };
 makeWord();
 
@@ -45,17 +46,29 @@ if (alphabet.indexOf(letter) === -1) {
 		letter = null;
 		guessesLeft = guessesLeft - 0;
 	}
-
-// need to exclude repeat guesses
+	
+// for debugging purposes
+console.log(alphabet.indexOf(letter));
 console.log(letter);
-if (word.includes(letter)) { 
-	for (var i = 0; i < word.length; i++) {
-		if (word.charAt(i) === letter) {
-			lettersInWord.slice(i, i + 1);
-			return word;
-		}
-	}
+
+
+// if letter guessed is correct
+if (word.includes(letter)) {
+	var breakdown = word.split('');
+	var correctGuess = breakdown.indexOf(letter);
+
+	console.log(breakdown);
+
+	// guesses.push(letter);
+
+	wordAsSpaces[correctGuess] = letter;
+	console.log(wordAsSpaces);
+
+	document.getElementById("wordspace").textContent = wordAsSpaces.join(" ");
+	// document.getElementById("guesses").textContent = guesses.join(" ");
+
 }
+
 else { // if letter is null, do not register it as a guess
 	if (letter === null) {
 		guessesLeft = guessesLeft - 0;
@@ -63,19 +76,18 @@ else { // if letter is null, do not register it as a guess
 	else { // but if letter is a valid guess but incorrect, send it to guesses array
 		guessesLeft--;
 		document.getElementById("guesses-left").textContent = guessesLeft;
-		guesses.push(letter) + (i + 1);
-		document.getElementById("guesses").textContent = guesses + " ";
+		guesses.push(letter);
+		document.getElementById("guesses").textContent = guesses.join(" ");
 	}
 
 };
-
 
 // game win/lose
 if (guessesLeft === 0) {
 	alert("You lost this round!");
 	beginGame();
 }
-else if (lettersInWord.indexOf("_") === -1) {
+else if (wordAsSpaces === word) {
 	alert("You won this round!");
 	makeWord();
 	wins++;
