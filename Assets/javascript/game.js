@@ -9,89 +9,101 @@ var letter;
 var wordAsSpaces = [];
 
 // picking a random word from the words array
-var wordNum = Math.floor(Math.random() * words.length); 
+var wordNum = Math.floor(Math.random() * words.length);
 var word = words[wordNum];
 
 // listens for keystroke to signal start of game
 function beginGame() {
-	document.addEventListener("keyup", function() {
-	}, false);
+    document.addEventListener("keyup", function() {}, false);
 };
 
 // putting word onto board	
 function makeWord() {
-	for (var i = 0; i < word.length; i++) {
-		wordAsSpaces.push("_");
-	}
-// turns wordAsSpaces into string from array
-document.getElementById("wordspace").textContent = wordAsSpaces.join(" ");
-console.log(word);
+    for (var i = 0; i < word.length; i++) {
+        wordAsSpaces.push("_");
+    }
+    // turns wordAsSpaces into string from array
+    document.getElementById("wordspace").textContent = wordAsSpaces.join(" ");
+    console.log(word);
 };
 makeWord();
 
 // registers that keystroke is a guess
 document.onkeyup = function(event) {
-	letter = event.key;
-	letter = letter.toUpperCase();
-	console.log(letter);
-	console.log(word);
+    letter = event.key;
+    letter = letter.toUpperCase();
+    console.log(letter);
+    console.log(word);
 
-// sees if guess is actually a letter
-if (alphabet.indexOf(letter) === -1) {
-		letter = null; // assigns a null value if key pressed isn't a letter
-		guessesLeft = guessesLeft - 0; // keeps guessesLeft from decrementing if letter is null
-	}
+    // sees if guess is actually a letter
+    if (alphabet.indexOf(letter) === -1) {
+        letter = null; // assigns a null value if key pressed isn't a letter
+        guessesLeft = guessesLeft - 0; // keeps guessesLeft from decrementing if letter is null
+    }
 
-	if (guesses.indexOf(letter) !== -1) {
-		letter = null;
-		guessesLeft = guessesLeft - 0;
-	}
-	
-// for debugging purposes
-console.log(alphabet.indexOf(letter));
-console.log(letter);
+    if (guesses.indexOf(letter) !== -1) {
+        letter = null;
+        guessesLeft = guessesLeft - 0;
+    }
+
+    // for debugging purposes
+    console.log(alphabet.letter);
+    console.log(letter);
 
 
-// if letter guessed is correct
-if (word.includes(letter)) {
-	var breakdown = word.split('');
-	var correctGuess = breakdown.indexOf(letter);
+    // if letter guessed is correct
+    
+    if (word.includes(letter)) {
+    	for (var i = 0; i < word.length; i++) {
+    	if (letter.includes(word.charAt(i))) {
+        var breakdown = word.split('');
+        var correctGuess = breakdown.indexOf(letter);
 
-	console.log(breakdown);
+        console.log(breakdown);
+        console.log(correctGuess);
 
-	// guesses.push(letter);
-
-	wordAsSpaces[correctGuess] = letter;
-	console.log(wordAsSpaces);
-
-	document.getElementById("wordspace").textContent = wordAsSpaces.join(" ");
-	// document.getElementById("guesses").textContent = guesses.join(" ");
-
+        // guesses.push(letter);
+        console.log(letter);
+        wordAsSpaces[correctGuess] = letter;
+        
+        var completeWord = wordAsSpaces.join("");
+        console.log(completeWord);
+        document.getElementById("wordspace").textContent = wordAsSpaces.join(" ");
 }
-
-else { // if letter is null, do not register it as a guess
-	if (letter === null) {
-		guessesLeft = guessesLeft - 0;
-	}
-	else { // but if letter is a valid guess but incorrect, send it to guesses array
-		guessesLeft--;
-		document.getElementById("guesses-left").textContent = guessesLeft;
-		guesses.push(letter);
-		document.getElementById("guesses").textContent = guesses.join(" ");
-	}
-
-};
-
-// game win/lose
-if (guessesLeft === 0) {
-	alert("You lost this round!");
-	beginGame();
+        // document.getElementById("guesses").textContent = guesses.join(" ");
 }
-else if (wordAsSpaces === word) {
-	alert("You won this round!");
-	makeWord();
-	wins++;
-	document.getElementById("wins").textContent = "Wins: " + wins;
-}
+    } else { // if letter is null, do not register it as a guess
+        if (letter === null) {
+            guessesLeft = guessesLeft - 0;
+        } else { // but if letter is a valid guess but incorrect, send it to guesses array
+            guessesLeft--;
+            document.getElementById("guesses-left").textContent = guessesLeft;
+            guesses.push(letter);
+            document.getElementById("guesses").textContent = guesses.join(" ");
+        }
+
+    };
+
+
+    // game win/lose
+    if (guessesLeft === 0) {
+        alert("You lost this round!");
+        beginGame();
+        guessesLeft = 15;
+        document.getElementById("guesses-left").textContent = guessesLeft;
+    } else if (completeWord === word) {
+        alert("You won this round!");
+        var blank = word.replace(word, " ");
+        console.log(blank);
+        var element = document.getElementById("wordspace");
+        element.parentNode.removeChild(wordspace);
+        var gameboard = document.getElementById("gameboard");
+        wordspace = document.createElement("wordspace");
+        document.getElementById("gameboard")
+        document.getElementById("wordspace").textContent = blank;
+        makeWord();
+        wins++;
+        document.getElementById("wins").textContent = wins;
+    }
 }
 beginGame(); // starts the game!
