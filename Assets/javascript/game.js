@@ -28,7 +28,7 @@ function makeWord() {
     console.log("word = " + word);
     console.log("newWord =" + newWord);
 };
-makeWord(word);
+makeWord();
 
 function startOver() {
     document.getElementById("previous-word").textContent = word;
@@ -61,6 +61,7 @@ document.onkeyup = function (event) {
     letter = letter.toUpperCase();
     // console.log("letter is " + letter);
     console.log("word = " + word);
+    document.getElementById("message").textContent = "";
 
     // sees if guess is actually a letter
     if (alphabet.indexOf(letter) === -1) {
@@ -123,10 +124,10 @@ document.onkeyup = function (event) {
 
     // game win/lose
     if (guessesLeft === 0) {
-        // alert("You lost this round!");
+        document.getElementById("message").textContent = "You lost this round!";
         startOver();
     } else if (completeWord === word) {
-        // alert("You won this round!");
+        document.getElementById("message").textContent = "You won this round!  The word was " + word + ".";
         wins++;
         console.log("wins: " + wins);
         document.getElementById("wins").textContent = wins; // Display updated wins value
