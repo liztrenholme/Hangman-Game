@@ -5,6 +5,7 @@ body {
 	background-size: 50%;
 	background-repeat: no-repeat;
 	background-attachment: fixed;
+	padding: 5%;
 }
 
 /*.container {
@@ -16,6 +17,11 @@ h1 {
 	color: hotpink;
 	font-family: 'Cabin Sketch', cursive;
 	margin: 3% 1%;
+	background-color: #fff;
+	border: solid green 5px;
+	opacity: .9;
+	font-size: 400%;
+	font-weight: bold;
 }
 
 p {
@@ -42,11 +48,8 @@ a:hover {
 	height: 200px;
 	padding: 10px;
 	border: 10px solid hotpink;
+	opacity: .9;
 }
-
-/* .container {
-	margin: 1%;
-} */
 
 #wordspace {
 	padding-top: 40px;
@@ -55,6 +58,7 @@ a:hover {
 	text-align: center;
 	font-weight: bold;
 	font-size: 200%;
+	font-family: 'Cabin Sketch', cursive;
 }
 
 .col-lg-3 {
@@ -72,6 +76,8 @@ a:hover {
 	text-align: center;
 	font-weight: bold;
 	font-size: 100%;
+	opacity: .9;
+	font-family: 'Cabin Sketch', cursive;
 }
 
 #winsbox, .previous {
@@ -85,6 +91,8 @@ a:hover {
 	text-align: center;
 	font-weight: bold;
 	font-size: 100%;
+	opacity: .9;
+	font-family: 'Cabin Sketch', cursive;
 }
 
 .guesses-box {
@@ -100,4 +108,6 @@ a:hover {
 	text-align: center;
 	font-weight: bold;
 	font-size: 100%;
+	opacity: .9;
+	font-family: 'Cabin Sketch', cursive;
 }
