@@ -51,8 +51,8 @@ document.onkeyup = function (event) {
     }
 
     // for debugging purposes
-    console.log("alphabet.letter = " + alphabet.letter);
-    console.log("letter = " + letter);
+    // console.log("alphabet.letter = " + alphabet.letter);
+    // console.log("letter = " + letter);
 
 
     // if letter guessed is correct
@@ -70,10 +70,17 @@ document.onkeyup = function (event) {
                 console.log("correctGuess = " + correctGuess);
 
                 // guesses.push(letter);
-                console.log(correctGuess[0]);
-                wordAsSpaces[correctGuess[0]] = letter;
-                wordAsSpaces[correctGuess[1]] = letter;
-                wordAsSpaces[correctGuess[2]] = letter;
+                console.log(correctGuess[i]);
+
+                for (var i = 0; i < correctGuess.length; i++) {
+                    wordAsSpaces[correctGuess[i]] = letter;
+                }
+
+
+                // Make sure all instamces of correct letter appears
+                // wordAsSpaces[correctGuess[0]] = letter;
+                // wordAsSpaces[correctGuess[1]] = letter;
+                // wordAsSpaces[correctGuess[2]] = letter;
 
                 var completeWord = wordAsSpaces.join("");
                 console.log(completeWord);
@@ -104,9 +111,10 @@ document.onkeyup = function (event) {
         // alert("You won this round!");
         wins++;
         console.log("wins: " + wins);
-        document.getElementById("wins").textContent = wins;
-        newWordNum = Math.floor(Math.random() * words.length);
-        newWord = words[newWordNum];
+        document.getElementById("wins").textContent = wins; // Display updated wins value
+        newWordNum = Math.floor(Math.random() * words.length); // Pick a new word randomly
+        newWord = words[newWordNum]; // Grab the new word
+        guesses = []; // Clear the guesses
         var blank = word.replace(newWord, " ");
         console.log("blank = " + blank);
         var gameboard = document.getElementById("gameboard");
@@ -121,7 +129,7 @@ document.onkeyup = function (event) {
         newWordspace.textContent = blank;
         console.log("newWord =" + newWord);
         word = newWord;
-        makeWord(newWord);
+        makeWord(newWord); // pass new word into makeword() function
     }
 }
 beginGame(); // starts the game!
