@@ -9,9 +9,12 @@ var letter;
 var wordAsSpaces = [];
 
 // picking a random word from the words array
+// var word = function pickWord () {
 var wordNum = Math.floor(Math.random() * words.length);
 var word = words[wordNum];
-
+var newWord;
+// return word;
+// }
 // listens for keystroke to signal start of game
 function beginGame() {
     document.addEventListener("keyup", function () { }, false);
@@ -24,16 +27,17 @@ function makeWord() {
     }
     // turns wordAsSpaces into string from array
     document.getElementById("wordspace").textContent = wordAsSpaces.join(" ");
-    console.log(word);
+    console.log("word = " + word);
+    console.log("newWord =" + newWord);
 };
-makeWord();
+makeWord(word);
 
 // registers that keystroke is a guess
 document.onkeyup = function (event) {
     letter = event.key;
     letter = letter.toUpperCase();
-    console.log(letter);
-    console.log(word);
+    console.log("letter is " + letter);
+    console.log("word = " + word);
 
     // sees if guess is actually a letter
     if (alphabet.indexOf(letter) === -1) {
@@ -97,18 +101,27 @@ document.onkeyup = function (event) {
         guessesLeft = 15;
         document.getElementById("guesses-left").textContent = guessesLeft;
     } else if (completeWord === word) {
-        alert("You won this round!");
+        // alert("You won this round!");
         wins++;
-        var blank = word.replace(word, " ");
-        console.log(blank);
-        var element = document.getElementById("wordspace");
-        element.parentNode.removeChild(wordspace);
-        var gameboard = document.getElementById("gameboard");
-        wordspace = document.createElement("wordspace");
-        document.getElementById("gameboard")
-        document.getElementById("wordspace").textContent = blank;
-        makeWord();
+        console.log("wins: " + wins);
         document.getElementById("wins").textContent = wins;
+        newWordNum = Math.floor(Math.random() * words.length);
+        newWord = words[newWordNum];
+        var blank = word.replace(newWord, " ");
+        console.log("blank = " + blank);
+        var gameboard = document.getElementById("gameboard");
+        gameboard.removeChild(wordspace);
+        console.log("childnode is " + gameboard.childNode);
+        // var gameboard = document.getElementById("gameboard");
+        var newWordspace = document.createElement("div");
+        gameboard.appendChild(newWordspace);
+        console.log("childnode is " + gameboard.childNode);
+        // gameboard.replaceChild(newWordspace, gameboard.childNodes[0]);
+        newWordspace.setAttribute("id", "wordspace");
+        newWordspace.textContent = blank;
+        console.log("newWord =" + newWord);
+        word = newWord;
+        makeWord(newWord);
     }
 }
 beginGame(); // starts the game!
