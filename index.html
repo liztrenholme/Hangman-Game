@@ -5,10 +5,12 @@
     <meta charset="utf-8">
     <html lang="en-us">
     <link rel="stylesheet" href="Assets/css/reset.css" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
     <link rel="stylesheet" href="Assets/css/style.css" />
     <title>Hangman!</title>
 </head>
+
 <body>
     <div class="container">
         <div class="row">
@@ -35,11 +37,16 @@
                 </div>
             </div>
             <div class="col-lg-6">
-                <div id="guesses">
+                <div class="guesses-box">
+                    <p>Already guessed:</p>
+                    <div id="guesses">
+                        Guess more letters!
+                    </div>
                 </div>
             </div>
         </div>
     </div>
     <script src="Assets/javascript/game.js"></script>
 </body>
+
 </html>

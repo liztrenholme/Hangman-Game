@@ -14,7 +14,7 @@ var word = words[wordNum];
 
 // listens for keystroke to signal start of game
 function beginGame() {
-    document.addEventListener("keyup", function() {}, false);
+    document.addEventListener("keyup", function () { }, false);
 };
 
 // putting word onto board	
@@ -29,7 +29,7 @@ function makeWord() {
 makeWord();
 
 // registers that keystroke is a guess
-document.onkeyup = function(event) {
+document.onkeyup = function (event) {
     letter = event.key;
     letter = letter.toUpperCase();
     console.log(letter);
@@ -47,31 +47,34 @@ document.onkeyup = function(event) {
     }
 
     // for debugging purposes
-    console.log(alphabet.letter);
-    console.log(letter);
+    console.log("alphabet.letter = " + alphabet.letter);
+    console.log("letter = " + letter);
 
 
     // if letter guessed is correct
-    
     if (word.includes(letter)) {
-    	for (var i = 0; i < word.length; i++) {
-    	if (letter.includes(word.charAt(i))) {
-        var breakdown = word.split('');
-        var correctGuess = breakdown.indexOf(letter);
+        var correctGuess = [];
+        for (var i = 0; i < word.length; i++) {
 
-        console.log(breakdown);
-        console.log(correctGuess);
+            // if (letter.includes(word.charAt(i))) {
+            if (word[i] === letter) {
+                var breakdown = word.split('');
+                correctGuess.push(i);
+                // var correctGuess = breakdown.indexOf(letter);
 
-        // guesses.push(letter);
-        console.log(letter);
-        wordAsSpaces[correctGuess] = letter;
-        
-        var completeWord = wordAsSpaces.join("");
-        console.log(completeWord);
-        document.getElementById("wordspace").textContent = wordAsSpaces.join(" ");
-}
-        // document.getElementById("guesses").textContent = guesses.join(" ");
-}
+                console.log("breakdown = " + breakdown);
+                console.log("correctGuess = " + correctGuess);
+
+                // guesses.push(letter);
+                console.log(letter);
+                wordAsSpaces[correctGuess] = letter;
+
+                var completeWord = wordAsSpaces.join("");
+                console.log(completeWord);
+                document.getElementById("wordspace").textContent = wordAsSpaces.join(" ");
+            }
+            // document.getElementById("guesses").textContent = guesses.join(" ");
+        }
     } else { // if letter is null, do not register it as a guess
         if (letter === null) {
             guessesLeft = guessesLeft - 0;
@@ -93,6 +96,7 @@ document.onkeyup = function(event) {
         document.getElementById("guesses-left").textContent = guessesLeft;
     } else if (completeWord === word) {
         alert("You won this round!");
+        wins++;
         var blank = word.replace(word, " ");
         console.log(blank);
         var element = document.getElementById("wordspace");
@@ -102,7 +106,6 @@ document.onkeyup = function(event) {
         document.getElementById("gameboard")
         document.getElementById("wordspace").textContent = blank;
         makeWord();
-        wins++;
         document.getElementById("wins").textContent = wins;
     }
 }

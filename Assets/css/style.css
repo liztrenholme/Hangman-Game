@@ -80,7 +80,7 @@ a:hover {
 	font-size: 100%;
 }
 
-#guesses {
+.guesses-box {
 	float: right;
 	display: block;
 	margin-top: 10px;
