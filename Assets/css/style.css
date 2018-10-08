@@ -67,7 +67,7 @@ a:hover {
 	font-size: 100%;
 }
 
-#winsbox {
+#winsbox, .previous {
 	display: block;
 	margin-top: 10px;
 	background-color: #fff;

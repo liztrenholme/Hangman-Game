@@ -30,6 +30,31 @@ function makeWord() {
 };
 makeWord(word);
 
+function startOver() {
+    document.getElementById("previous-word").textContent = word;
+    newWordNum = Math.floor(Math.random() * words.length); // Pick a new word randomly
+    newWord = words[newWordNum]; // Grab the new word
+    guesses = []; // Clear the guesses
+    document.getElementById("guesses").textContent = "Guess more letters!";
+    wordAsSpaces = []; // Clear the spaces
+    guessesLeft = 15;
+    document.getElementById("guesses-left").textContent = guessesLeft;
+    var blank = word.replace(newWord, " ");
+    console.log("blank = " + blank);
+    var gameboard = document.getElementById("gameboard");
+    gameboard.removeChild(wordspace);
+    console.log("childnode is " + gameboard.childNode);
+    var newWordspace = document.createElement("div");
+    gameboard.appendChild(newWordspace);
+    console.log("childnode is " + gameboard.childNode);
+    newWordspace.setAttribute("id", "wordspace");
+    newWordspace.textContent = "";
+    newWordspace.textContent = newWord;
+    console.log("newWord =" + newWord);
+    word = newWord;
+    makeWord();
+}
+
 // registers that keystroke is a guess
 document.onkeyup = function (event) {
     letter = event.key;
@@ -69,12 +94,12 @@ document.onkeyup = function (event) {
                 // guesses.push(letter);
                 console.log(correctGuess[i]);
                 // Make sure all instamces of correctly guessed letter appears
-                // for (var i = 0; i < correctGuess.length; i++) {
-                //     wordAsSpaces[correctGuess[i]] = letter;
-                // }
-                wordAsSpaces[correctGuess[0]] = letter;
-                wordAsSpaces[correctGuess[1]] = letter;
-                wordAsSpaces[correctGuess[2]] = letter;
+                for (var i = 0; i < correctGuess.length; i++) {
+                    wordAsSpaces[correctGuess[i]] = letter;
+                }
+                // wordAsSpaces[correctGuess[0]] = letter;
+                // wordAsSpaces[correctGuess[1]] = letter;
+                // wordAsSpaces[correctGuess[2]] = letter;
 
                 var completeWord = wordAsSpaces.join("");
                 console.log(completeWord);
@@ -95,59 +120,17 @@ document.onkeyup = function (event) {
     };
 
 
+
     // game win/lose
     if (guessesLeft === 0) {
         // alert("You lost this round!");
-        beginGame();
-        guessesLeft = 15;
-        document.getElementById("guesses-left").textContent = guessesLeft;
-        newWordNum = Math.floor(Math.random() * words.length); // Pick a new word randomly
-        newWord = words[newWordNum]; // Grab the new word
-        guesses = []; // Clear the guesses
-        wordAsSpaces = []; // Clear the spaces
-        var blank = word.replace(newWord, " ");
-        console.log("blank = " + blank);
-        var gameboard = document.getElementById("gameboard");
-        gameboard.removeChild(wordspace);
-        console.log("childnode is " + gameboard.childNode);
-        // var gameboard = document.getElementById("gameboard");
-        var newWordspace = document.createElement("div");
-        gameboard.appendChild(newWordspace);
-        console.log("childnode is " + gameboard.childNode);
-        // gameboard.replaceChild(newWordspace, gameboard.childNodes[0]);
-        newWordspace.setAttribute("id", "wordspace");
-        newWordspace.textContent = "";
-        newWordspace.textContent = newWord;
-        console.log("newWord =" + newWord);
-        word = newWord;
-        makeWord();
+        startOver();
     } else if (completeWord === word) {
         // alert("You won this round!");
         wins++;
         console.log("wins: " + wins);
         document.getElementById("wins").textContent = wins; // Display updated wins value
-        newWordNum = Math.floor(Math.random() * words.length); // Pick a new word randomly
-        newWord = words[newWordNum]; // Grab the new word
-        guesses = []; // Clear the guesses
-        wordAsSpaces = []; // Clear the spaces
-        guessesLeft = 15;
-        document.getElementById("guesses-left").textContent = guessesLeft;
-        var blank = word.replace(newWord, " ");
-        console.log("blank = " + blank);
-        var gameboard = document.getElementById("gameboard");
-        gameboard.removeChild(wordspace);
-        console.log("childnode is " + gameboard.childNode);
-        // var gameboard = document.getElementById("gameboard");
-        var newWordspace = document.createElement("div");
-        gameboard.appendChild(newWordspace);
-        console.log("childnode is " + gameboard.childNode);
-        // gameboard.replaceChild(newWordspace, gameboard.childNodes[0]);
-        newWordspace.setAttribute("id", "wordspace");
-        newWordspace.textContent = "";
-        newWordspace.textContent = newWord;
-        console.log("newWord =" + newWord);
-        word = newWord;
-        makeWord();
+        startOver();
     }
 }
 beginGame(); // starts the game!
