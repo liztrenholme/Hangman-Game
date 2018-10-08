@@ -66,8 +66,9 @@ document.onkeyup = function (event) {
                 console.log("correctGuess = " + correctGuess);
 
                 // guesses.push(letter);
-                console.log(letter);
-                wordAsSpaces[correctGuess] = letter;
+                console.log(correctGuess[0]);
+                wordAsSpaces[correctGuess[0]] = letter;
+                wordAsSpaces[correctGuess[1]] = letter;
 
                 var completeWord = wordAsSpaces.join("");
                 console.log(completeWord);
