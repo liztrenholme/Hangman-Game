@@ -97,10 +97,30 @@ document.onkeyup = function (event) {
 
     // game win/lose
     if (guessesLeft === 0) {
-        alert("You lost this round!");
+        // alert("You lost this round!");
         beginGame();
         guessesLeft = 15;
         document.getElementById("guesses-left").textContent = guessesLeft;
+        newWordNum = Math.floor(Math.random() * words.length); // Pick a new word randomly
+        newWord = words[newWordNum]; // Grab the new word
+        guesses = []; // Clear the guesses
+        wordAsSpaces = []; // Clear the spaces
+        var blank = word.replace(newWord, " ");
+        console.log("blank = " + blank);
+        var gameboard = document.getElementById("gameboard");
+        gameboard.removeChild(wordspace);
+        console.log("childnode is " + gameboard.childNode);
+        // var gameboard = document.getElementById("gameboard");
+        var newWordspace = document.createElement("div");
+        gameboard.appendChild(newWordspace);
+        console.log("childnode is " + gameboard.childNode);
+        // gameboard.replaceChild(newWordspace, gameboard.childNodes[0]);
+        newWordspace.setAttribute("id", "wordspace");
+        newWordspace.textContent = "";
+        newWordspace.textContent = newWord;
+        console.log("newWord =" + newWord);
+        word = newWord;
+        makeWord();
     } else if (completeWord === word) {
         // alert("You won this round!");
         wins++;
@@ -110,6 +130,8 @@ document.onkeyup = function (event) {
         newWord = words[newWordNum]; // Grab the new word
         guesses = []; // Clear the guesses
         wordAsSpaces = []; // Clear the spaces
+        guessesLeft = 15;
+        document.getElementById("guesses-left").textContent = guessesLeft;
         var blank = word.replace(newWord, " ");
         console.log("blank = " + blank);
         var gameboard = document.getElementById("gameboard");
