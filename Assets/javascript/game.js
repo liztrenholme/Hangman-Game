@@ -8,13 +8,11 @@ var correctLetters = [];
 var letter;
 var wordAsSpaces = [];
 
-// picking a random word from the words array
-// var word = function pickWord () {
+
 var wordNum = Math.floor(Math.random() * words.length);
 var word = words[wordNum];
 var newWord;
-// return word;
-// }
+
 // listens for keystroke to signal start of game
 function beginGame() {
     document.addEventListener("keyup", function () { }, false);
@@ -36,7 +34,7 @@ makeWord(word);
 document.onkeyup = function (event) {
     letter = event.key;
     letter = letter.toUpperCase();
-    console.log("letter is " + letter);
+    // console.log("letter is " + letter);
     console.log("word = " + word);
 
     // sees if guess is actually a letter
@@ -54,7 +52,6 @@ document.onkeyup = function (event) {
     // console.log("alphabet.letter = " + alphabet.letter);
     // console.log("letter = " + letter);
 
-
     // if letter guessed is correct
     if (word.includes(letter)) {
         var correctGuess = [];
@@ -71,16 +68,13 @@ document.onkeyup = function (event) {
 
                 // guesses.push(letter);
                 console.log(correctGuess[i]);
-
-                for (var i = 0; i < correctGuess.length; i++) {
-                    wordAsSpaces[correctGuess[i]] = letter;
-                }
-
-
-                // Make sure all instamces of correct letter appears
-                // wordAsSpaces[correctGuess[0]] = letter;
-                // wordAsSpaces[correctGuess[1]] = letter;
-                // wordAsSpaces[correctGuess[2]] = letter;
+                // Make sure all instamces of correctly guessed letter appears
+                // for (var i = 0; i < correctGuess.length; i++) {
+                //     wordAsSpaces[correctGuess[i]] = letter;
+                // }
+                wordAsSpaces[correctGuess[0]] = letter;
+                wordAsSpaces[correctGuess[1]] = letter;
+                wordAsSpaces[correctGuess[2]] = letter;
 
                 var completeWord = wordAsSpaces.join("");
                 console.log(completeWord);
@@ -115,6 +109,7 @@ document.onkeyup = function (event) {
         newWordNum = Math.floor(Math.random() * words.length); // Pick a new word randomly
         newWord = words[newWordNum]; // Grab the new word
         guesses = []; // Clear the guesses
+        wordAsSpaces = []; // Clear the spaces
         var blank = word.replace(newWord, " ");
         console.log("blank = " + blank);
         var gameboard = document.getElementById("gameboard");
@@ -126,10 +121,11 @@ document.onkeyup = function (event) {
         console.log("childnode is " + gameboard.childNode);
         // gameboard.replaceChild(newWordspace, gameboard.childNodes[0]);
         newWordspace.setAttribute("id", "wordspace");
-        newWordspace.textContent = blank;
+        newWordspace.textContent = "";
+        newWordspace.textContent = newWord;
         console.log("newWord =" + newWord);
         word = newWord;
-        makeWord(newWord); // pass new word into makeword() function
+        makeWord();
     }
 }
 beginGame(); // starts the game!
