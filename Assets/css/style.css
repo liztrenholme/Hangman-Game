@@ -114,9 +114,9 @@ a:hover {
 	grid-column-end: 4;
 }
 
-button {
+/* button {
 	display: none;
-}
+} */
 
 @media (max-width: 967.98px) {
 	button {
