@@ -120,6 +120,6 @@ button {
 
 @media (max-width: 767.98px) {
 	button {
-		display: show;
+		display: inline;
 	}
 }
