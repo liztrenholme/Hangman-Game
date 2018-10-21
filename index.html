@@ -22,43 +22,33 @@
             <div class="col-lg-2"></div>
         </div>
         <div class="row">
-            <div class="col-lg-3">
-                <div id="chances">
-                    <p>Guesses left: </p>
-                    <p id="guesses-left">15</p>
-                </div>
-                <div>
-                    <div id="winsbox">
-                        <p>Wins: </p>
-                        <p id="wins">0</p>
-                    </div>
-                </div>
-                <div class="previous">
-                    <p>The word was:</p>
-                    <div id="previous-word">
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6">
-                <div class="gameboard" id="gameboard">
+            <div class="col-lg-12">
+                <div class="jumbotron jumbotron-fluid gameboard" id="gameboard">
+                    <!-- <div class="gameboard" > -->
                     <p id="message"></p>
                     <div id="wordspace">
                         <p>Press any key to get started!</p>
                     </div>
+                    <!-- </div> -->
                 </div>
-            </div>
-            <div class="col-lg-3">
-                <!-- <div class="message-box">
-                    <p id="message"></p>
-                </div> -->
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-3">
-
-            </div>
-            <div class="col-lg-6">
-                <div class="guesses-box">
+            <div class="grid-container">
+                <div class="grid-item" id="chances">
+                    <p>Guesses left: </p>
+                    <p id="guesses-left">15</p>
+                </div>
+                <div class="grid-item" id="winsbox">
+                    <p>Wins: </p>
+                    <p id="wins">0</p>
+                </div>
+                <div class="previous grid-item">
+                    <p>The word was:</p>
+                    <div id="previous-word">
+                    </div>
+                </div>
+                <div class="guesses-box grid-item">
                     <p>Already guessed:</p>
                     <div id="guesses">
                         <p>Keep guessing!</p>
@@ -66,8 +56,17 @@
                 </div>
             </div>
         </div>
-    </div>
-    <script src="Assets/javascript/game.js"></script>
+            <div class="row">
+                <div class="col-lg-3">
+                </div>
+                <div class="col-lg-6">
+                        <button class="btn-warning" id="keyboard-button"><p>Trigger Keyboard</p></button>
+                </div>
+                <div class="col-lg-3">
+                    </div>
+            </div>
+        </div>
+        <script src="Assets/javascript/game.js"></script>
 </body>
 
 </html>

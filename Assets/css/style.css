@@ -28,7 +28,7 @@ p {
 	font-family: 'Cabin Sketch', cursive;
 }
 
-a:link {
+/* a:link {
 	color: gray;
 	text-decoration: none;
 	}
@@ -39,20 +39,26 @@ a:visited {
 a:hover {
 	color: hotpink;
 	text-decoration: none;
-	}
+	} */
 
 .gameboard {
 	display: block;
-	margin-top: 50px;
+	margin-top: 10%;
 	background-color: #fff;
-	height: 200px;
-	padding: 10px;
+	height: 250px;
+	padding: 5%;
 	border: 10px solid hotpink;
 	opacity: .9;
 }
 
+.grid-container {
+	display: grid;
+	grid-template-columns: auto auto auto;
+	width: 100%;
+  }
+
 #wordspace {
-	padding-top: 40px;
+	padding-top: 4%;
 	color: green;
 	letter-spacing: 8px;
 	text-align: center;
@@ -61,16 +67,12 @@ a:hover {
 	font-family: 'Cabin Sketch', cursive;
 }
 
-.col-lg-3 {
-	width: 20%
-}
-
 #chances {
 	display: block;
-	margin-top: 10px;
+	margin-top: 1%;
 	background-color: #fff;
 	height: auto;
-	padding: 10px;
+	padding: 1%;
 	border: 5px solid hotpink;
 	color: green;
 	text-align: center;
@@ -82,10 +84,10 @@ a:hover {
 
 #winsbox, .previous {
 	display: block;
-	margin-top: 10px;
+	margin-top: 1%;
 	background-color: #fff;
 	height: auto;
-	padding: 10px;
+	padding: 1%;
 	border: 5px solid hotpink;
 	color: green;
 	text-align: center;
@@ -98,10 +100,8 @@ a:hover {
 .guesses-box {
 	float: right;
 	display: block;
-	margin-top: 10px;
+	margin-top: 1%;
 	background-color: #fff;
-	height: auto;
-	width: 75%;
 	padding: 10px;
 	border: 5px solid hotpink;
 	color: green;
@@ -110,4 +110,16 @@ a:hover {
 	font-size: 100%;
 	opacity: .9;
 	font-family: 'Cabin Sketch', cursive;
+	grid-column-start: 1;
+	grid-column-end: 4;
+}
+
+button {
+	display: none;
+}
+
+@media (max-width: 767.98px) {
+	button {
+		display: show;
+	}
 }

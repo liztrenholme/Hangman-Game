@@ -13,6 +13,13 @@ var wordNum = Math.floor(Math.random() * words.length);
 var word = words[wordNum];
 var newWord;
 
+// Listens for click to trigger keyboard in mobile
+function triggerKeyboard() {
+    document.getElementById('keyboard-button').addEventListener('click', function () {
+        console.log("button works!");
+      });
+};
+
 // listens for keystroke to signal start of game
 function beginGame() {
     document.addEventListener("keyup", function () { }, false);
@@ -25,8 +32,8 @@ function makeWord() {
     }
     // turns wordAsSpaces into string from array
     document.getElementById("wordspace").textContent = wordAsSpaces.join(" ");
-    console.log("word = " + word);
-    console.log("newWord =" + newWord);
+    // console.log("word = " + word);
+    // console.log("newWord =" + newWord);
 };
 makeWord();
 
@@ -40,17 +47,17 @@ function startOver() {
     guessesLeft = 15;
     document.getElementById("guesses-left").textContent = guessesLeft;
     var blank = word.replace(newWord, " ");
-    console.log("blank = " + blank);
+    // console.log("blank = " + blank);
     var gameboard = document.getElementById("gameboard");
     gameboard.removeChild(wordspace);
-    console.log("childnode is " + gameboard.childNode);
+    // console.log("childnode is " + gameboard.childNode);
     var newWordspace = document.createElement("div");
     gameboard.appendChild(newWordspace);
-    console.log("childnode is " + gameboard.childNode);
+    // console.log("childnode is " + gameboard.childNode);
     newWordspace.setAttribute("id", "wordspace");
     newWordspace.textContent = "";
     newWordspace.textContent = newWord;
-    console.log("newWord =" + newWord);
+    // console.log("newWord =" + newWord);
     word = newWord;
     makeWord();
 }
@@ -60,7 +67,7 @@ document.onkeyup = function (event) {
     letter = event.key;
     letter = letter.toUpperCase();
     // console.log("letter is " + letter);
-    console.log("word = " + word);
+    // console.log("word = " + word);
     document.getElementById("message").textContent = "";
 
     // sees if guess is actually a letter
@@ -89,11 +96,11 @@ document.onkeyup = function (event) {
                 correctGuess.push(i);
                 // var correctGuess = breakdown.indexOf(letter);
 
-                console.log("breakdown = " + breakdown);
-                console.log("correctGuess = " + correctGuess);
+                // console.log("breakdown = " + breakdown);
+                // console.log("correctGuess = " + correctGuess);
 
                 // guesses.push(letter);
-                console.log(correctGuess[i]);
+                // console.log(correctGuess[i]);
                 // Make sure all instamces of correctly guessed letter appears
                 for (var i = 0; i < correctGuess.length; i++) {
                     wordAsSpaces[correctGuess[i]] = letter;
@@ -103,7 +110,7 @@ document.onkeyup = function (event) {
                 // wordAsSpaces[correctGuess[2]] = letter;
 
                 var completeWord = wordAsSpaces.join("");
-                console.log(completeWord);
+                // console.log(completeWord);
                 document.getElementById("wordspace").textContent = wordAsSpaces.join(" ");
             }
             // document.getElementById("guesses").textContent = guesses.join(" ");
@@ -129,7 +136,7 @@ document.onkeyup = function (event) {
     } else if (completeWord === word) {
         document.getElementById("message").textContent = "You won this round!  The word was " + word + ".";
         wins++;
-        console.log("wins: " + wins);
+        // console.log("wins: " + wins);
         document.getElementById("wins").textContent = wins; // Display updated wins value
         startOver();
     }
